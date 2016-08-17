@@ -1,0 +1,33 @@
+{
+  "name": "flow-express-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "dev": "node index.js",
+    "debug": "babel src --out-dir build && node build/test",
+    "test": "echo \"Error: no test specified\" && exit 1"    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasschejtman/flow-express-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasschejtman/flow-express-api/issues"
+  },
+  "homepage": "https://github.com/lucasschejtman/flow-express-api#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.11.4",
+    "babel-plugin-transform-flow-strip-types": "^6.8.0",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.9.0"
+  }
+}
