@@ -3,8 +3,8 @@
 import express from 'express';
 
 const add = (a : number, b : number) : number => {
-  return a + b;
-}
+  return a + b
+};
 
 const app = express();
 

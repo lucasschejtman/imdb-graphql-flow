@@ -2,11 +2,11 @@
   "name": "flow-express-api",
   "version": "1.0.0",
   "description": "",
-  "main": "test.js",
+  "main": "build/index",
   "scripts": {
-    "dev": "node index.js",
-    "debug": "babel src --out-dir build && node build/test",
-    "test": "echo \"Error: no test specified\" && exit 1"    
+    "dev": "node index",
+    "debug": "babel src --out-dir build && node build/index",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
