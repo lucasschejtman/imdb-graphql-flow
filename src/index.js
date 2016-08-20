@@ -1,13 +1,13 @@
 /* @flow */
 
 import express from 'express';
-
-const add = (a : number, b : number) : number => {
-  return a + b
-};
+import graphqlHTTP from 'express-graphql';
+import schema from './schema';
 
 const app = express();
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  graphiql: true
+}));
 
-app.get('/test', (req, res) => res.json(add(1,2)));
-
-app.listen(9000, () => console.log('server started!'));
+app.listen(3000);

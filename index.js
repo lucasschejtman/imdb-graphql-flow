@@ -1,3 +1,3 @@
 require('babel-register');
 require('babel-polyfill');
-require('./src/test');
+require('./src/index');
