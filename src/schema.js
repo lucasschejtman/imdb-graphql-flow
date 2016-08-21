@@ -76,7 +76,7 @@ const TitleType = new GraphQLObjectType({
         }
       },
       resolve: (root: imdbTitleType, { first }: any): [string] => {
-        const cast = root.data.cast;
+        const cast: [string] = root.data.cast;
         return cast.slice(0, first || cast.length);
       }
     }
