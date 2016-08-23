@@ -15,4 +15,10 @@ declare interface ImdbPersonData extends ImdbData {
   filmography: [string] //change to Film
 };
 
+declare interface ImdbTermResultData {
+  results: {
+    names: [ImdbPersonData]
+  }
+};
+
 declare interface JSONObject { [key:string]: mixed };

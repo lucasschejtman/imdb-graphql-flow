@@ -1,11 +1,14 @@
 /* @flow */
 
+import { getFilmCast, searchById } from '../services/imdbService';
+
 import {
   GraphQLInt,
   GraphQLInterfaceType,
   GraphQLObjectType,
   GraphQLList,
-  GraphQLString
+  GraphQLString,
+  GraphQLNonNull
 } from 'graphql';
 
 const searchableProps = {
@@ -47,26 +50,6 @@ export const Film = new GraphQLObjectType({
   }
 });
 
-export const Title = new GraphQLObjectType({
-  name: 'Title',
-  interfaces: [Searchable],
-  fields: {
-    ...searchableProps,
-    cast: {
-      type: new GraphQLList(GraphQLString),
-      args: {
-        first: {
-          type: GraphQLInt
-        }
-      },
-      resolve: (data: ImdbTitleData, { first }: any): [string] => {
-        const cast: [string] = data.cast;
-        return cast.slice(0, first || cast.length);
-      }
-    }
-  },
-});
-
 export const Person = new GraphQLObjectType({
   name: 'Person',
   interfaces: [Searchable],
@@ -82,6 +65,29 @@ export const Person = new GraphQLObjectType({
       resolve: (data: ImdbPersonData, { first }: any): [Film] => {
         const filmography = data.filmography;
         return filmography.slice(0, first || filmography.length);
+      }
+    }
+  },
+});
+
+export const Title = new GraphQLObjectType({
+  name: 'Title',
+  interfaces: [Searchable],
+  fields: {
+    ...searchableProps,
+    cast: {
+      type: new GraphQLList(Person),
+      args: {
+        first: {
+          type: new GraphQLNonNull(GraphQLInt)
+        }
+      },
+      resolve: (data: ImdbTitleData, { first }: any): Promise<[Person]> => {
+        const toSearch: [string] = data.cast.slice(0, first);
+        const cast: Promise<[ImdbTermResultData]> = getFilmCast(toSearch)
+          .then(c => c.map((cst: ImdbTermResultData) => cst.results.names[0].id))
+          .then(c => c.map(searchById));
+        return cast;
       }
     }
   },

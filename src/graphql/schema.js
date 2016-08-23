@@ -1,7 +1,7 @@
 /* @flow */
 
 import { Person, Title, Searchable } from './objects';
-import { getImdbType } from '../services/imdbService';
+import { searchById } from '../services/imdbService';
 import { GraphQLObjectType, GraphQLNonNull, GraphQLSchema, GraphQLString } from 'graphql';
 
 const schema: GraphQLSchema = new GraphQLSchema({
@@ -16,7 +16,7 @@ const schema: GraphQLSchema = new GraphQLSchema({
             type: new GraphQLNonNull(GraphQLString)
           }
         },
-        resolve: (root: any, { id }: any): Promise<JSONObject> => getImdbType(id)
+        resolve: (root: any, { id }: any): Promise<JSONObject> => searchById(id)
       }
     }
   })
