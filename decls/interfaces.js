@@ -1,6 +1,6 @@
 /* @flow */
 
-//import { Film } from '../graphql/types';
+import { Film } from '../graphql/types';
 
 declare interface ImdbData {
   id: string,
@@ -12,7 +12,8 @@ declare interface ImdbTitleData extends ImdbData {
 };
 
 declare interface ImdbPersonData extends ImdbData {
-  filmography: [string] //change to Film
+  title: string,
+  filmography: [Film] //change to Film
 };
 
 declare interface ImdbTermResultData {

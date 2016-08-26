@@ -14,6 +14,7 @@ query test {
     }
     ... on Person{
       ...searchableProps,
+      title,
       filmography {
         title
         year

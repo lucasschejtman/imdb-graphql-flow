@@ -55,6 +55,10 @@ export const Person = new GraphQLObjectType({
   interfaces: [Searchable],
   fields: {
     ...searchableProps,
+    title: {
+      type: GraphQLString,
+      resolve: (data: ImdbPersonData): string => data.title
+    },
     filmography: {
       type: new GraphQLList(Film),
       args: {
