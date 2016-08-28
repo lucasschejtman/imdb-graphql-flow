@@ -74,6 +74,10 @@ export const Person = new GraphQLObjectType({
         const filmography = data.filmography;
         return filmography.slice(0, first || filmography.length);
       }
+    },
+    occupation: {
+      type: new GraphQLList(GraphQLString),
+      resolve: (data: ImdbPersonData): [string] => data.occupation
     }
   },
 });

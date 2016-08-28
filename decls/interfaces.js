@@ -14,7 +14,8 @@ declare interface ImdbTitleData extends ImdbData {
 declare interface ImdbPersonData extends ImdbData {
   title: string,
   description: string,
-  filmography: [Film]
+  filmography: [Film],
+  occupation: [string]
 };
 
 declare interface ImdbTermResultData {

@@ -19,7 +19,8 @@ query test {
         title
         year
         info
-      }
+      },
+      occupation
     }
   }
 }
