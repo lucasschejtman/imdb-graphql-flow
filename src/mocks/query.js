@@ -20,7 +20,8 @@ query test {
         year
         info
       },
-      occupation
+      occupation,
+      image
     }
   }
 }
