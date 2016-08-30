@@ -67,6 +67,10 @@ export const Person = new GraphQLObjectType({
       type: GraphQLString,
       resolve: (data: ImdbPersonData): string => data.image
     },
+    mediaLinks: {
+      type: new GraphQLList(GraphQLString),
+      resolve: (data: ImdbPersonData): [string] => data.mediaLinks
+    },
     filmography: {
       type: new GraphQLList(Film),
       args: {

@@ -15,13 +15,15 @@ query test {
     ... on Person{
       ...searchableProps,
       title,
+      description,
       filmography {
         title
         year
         info
       },
       occupation,
-      image
+      image,
+      mediaLinks
     }
   }
 }
