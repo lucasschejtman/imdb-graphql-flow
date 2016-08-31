@@ -95,6 +95,10 @@ export const Title = new GraphQLObjectType({
   interfaces: [Searchable],
   fields: {
     ...searchableProps,
+    rating: {
+      type: GraphQLString,
+      resolve: () => { throw new Error('"rating" not yet implemented'); }
+    },
     cast: {
       type: new GraphQLList(Person),
       args: {

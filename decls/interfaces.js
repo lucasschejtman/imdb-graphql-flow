@@ -8,6 +8,7 @@ declare interface ImdbData {
 };
 
 declare interface ImdbTitleData extends ImdbData {
+  rating: string,
   cast: [string]
 };
 
