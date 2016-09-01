@@ -27,4 +27,26 @@ declare interface ImdbTermResultData {
   }
 };
 
+declare interface OmdbTitleResultData {
+  Title: string,
+  Released: string,
+  Year: string,
+  Rated: string,
+  Runtime: string,
+  Genre: string,
+  Director: string,
+  Writer: string,
+  Actors: string,
+  Plot: string,
+  Language: string,
+  Country: string,
+  Awards: String,
+  Poster: string,
+  Metascore: string,
+  ImdbRating: string,
+  ImdbVotes: string,
+  ImdbId: string,
+  Type: string
+};
+
 declare interface JSONObject { [key:string]: mixed };
