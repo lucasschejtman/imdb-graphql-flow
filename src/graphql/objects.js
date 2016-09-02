@@ -2,6 +2,9 @@
 
 import { getFilmCast, searchById } from '../services/imdbService';
 
+import { map,
+  /* $FlowIgnore: 'composeP' not included in declaration */
+  composeP } from 'ramda';
 import {
   GraphQLInt,
   GraphQLInterfaceType,
@@ -108,6 +111,8 @@ export const Title = new GraphQLObjectType({
       },
       resolve: (data: ImdbTitleData, { first }: any): Promise<[Person]> => {
         const toSearch: [string] = data.cast.slice(0, first);
+        // beginning of refactor
+        //const cast: Promise<[ImdbTermResultData]> = composeP(getFilmCast)(toSearch);
         const cast: Promise<[ImdbTermResultData]> = getFilmCast(toSearch)
           .then(c => c.map((cst: ImdbTermResultData) => cst.results.names[0].id))
           .then(c => c.map(searchById));

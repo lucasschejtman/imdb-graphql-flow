@@ -6,7 +6,9 @@ import {
   composeP,
   curry,
   map,
-  prop
+  prop,
+  path,
+  head
 } from 'ramda';
 import rp from 'request-promise';
 
@@ -23,3 +25,8 @@ export const searchTerm = (term: string): Promise<ImdbTermResultData> => compose
 export const searchTerms = (terms: [string]): [Promise<ImdbTermResultData>] => map(searchTerm)(terms);
 export const getFilmCast = (cast: [string]): Promise<[ImdbTermResultData]> => compose(curriedPromiseAll, searchTerms)(cast);
 export const searchOmdb = (id: string): Promise<OmdbTitleResultData> => composeP(curriedRequest, searchOmdpUrl)(id);
+
+//TODO: Move these functions somewhere else
+export const filmCast = (data: ImdbTermResultData): ?[string] => path(['results', 'names'])(data);
+export const castIds = (cast: [{ [key:string]: string }]): [string] => map(prop('id'))(cast);
+//export const getFirstCastName = (cast: ImdbTermResultData): string => compose(prop('id'), head, path(['results', 'names']))(cast);
