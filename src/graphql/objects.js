@@ -1,8 +1,8 @@
 /* @flow */
 
-import { getFilmCast, searchById } from '../services/imdbService';
+import { getFilmCast, searchById, searchOmdb } from '../services/imdbService';
 
-import { map,
+import { map, prop, cond, compose, equals, always,
   /* $FlowIgnore: 'composeP' not included in declaration */
   composeP } from 'ramda';
 import {
@@ -26,13 +26,8 @@ const searchableProps = {
 };
 
 const SearchableResolver = (data: ImdbData) : GraphQLObjectType => {
-  const type = data.type;
-  switch(type) {
-    case 'title':
-    return Title;
-    case 'name':
-    return Person;
-  }
+  const resolver = cond([[equals('title'), always(Title)], [equals('name'), always(Person)]]);
+  return compose(resolver, prop('type'))(data);
 };
 
 export const Searchable = new GraphQLInterfaceType({
@@ -100,7 +95,7 @@ export const Title = new GraphQLObjectType({
     ...searchableProps,
     rating: {
       type: GraphQLString,
-      resolve: () => { throw new Error('"rating" not yet implemented'); }
+      resolve: ({ id }: ImdbTitleData): Promise<string> => composeP(prop('imdbRating'), searchOmdb)(id)
     },
     cast: {
       type: new GraphQLList(Person),

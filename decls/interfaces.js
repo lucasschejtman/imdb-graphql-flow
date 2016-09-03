@@ -43,9 +43,9 @@ declare interface OmdbTitleResultData {
   Awards: String,
   Poster: string,
   Metascore: string,
-  ImdbRating: string,
-  ImdbVotes: string,
-  ImdbId: string,
+  imdbRating: string,
+  imdbVotes: string,
+  imdbId: string,
   Type: string
 };
 
