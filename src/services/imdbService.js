@@ -28,5 +28,6 @@ export const searchOmdb = (id: string): Promise<OmdbTitleResultData> => composeP
 
 //TODO: Move these functions somewhere else
 export const filmCast = (data: ImdbTermResultData): ?[string] => path(['results', 'names'])(data);
-export const castIds = (cast: [{ [key:string]: string }]): [string] => map(prop('id'))(cast);
-//export const getFirstCastId = (imdbResult: ImdbTermResultData): ?string => compose(prop('id'), head, castIds, filmCast)(imdbResult);
+export const mapIds = (arr: [{ [key:string]: string }]): [string] => map(prop('id'))(arr);
+/* $FlowIgnore: there seems to be a bug in the declaration of the intersection - code works fine */
+export const getFirstCastId = (imdbResult: ImdbTermResultData): string => compose(head, mapIds, filmCast)(imdbResult);

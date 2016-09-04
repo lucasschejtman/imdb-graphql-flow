@@ -1,9 +1,10 @@
 
 query test {
-  search(id:"nm0000115 | tt2488496"){
+  search(id: "nm0000115 | tt2488496") {
   	... on Title{
       ...searchableProps,
       rating,
+      votes,
       cast(first: 1) {
         ...searchableProps,
         filmography(first: 2) {
@@ -13,7 +14,7 @@ query test {
       	}
       }
     }
-    ... on Person{
+    ... on Person {
       ...searchableProps,
       title,
       description,

@@ -1,6 +1,7 @@
 /* @flow */
 
-import { getFilmCast, searchById, searchOmdb } from '../services/imdbService';
+import { firstN } from '../utils/collection';
+import { getFilmCast, searchById, searchOmdb, getFirstCastId } from '../services/imdbService';
 
 import { map, prop, cond, compose, equals, always,
   /* $FlowIgnore: 'composeP' not included in declaration */
@@ -77,8 +78,7 @@ export const Person = new GraphQLObjectType({
         }
       },
       resolve: (data: ImdbPersonData, { first }: any): [Film] => {
-        const filmography = data.filmography;
-        return filmography.slice(0, first || filmography.length);
+        return firstN(first, data.filmography);
       }
     },
     occupation: {
@@ -97,6 +97,10 @@ export const Title = new GraphQLObjectType({
       type: GraphQLString,
       resolve: ({ id }: ImdbTitleData): Promise<string> => composeP(prop('imdbRating'), searchOmdb)(id)
     },
+    votes: {
+      type: GraphQLString,
+      resolve: ({ id }: ImdbTitleData): Promise<string> => composeP(prop('imdbVotes'), searchOmdb)(id)
+    },
     cast: {
       type: new GraphQLList(Person),
       args: {
@@ -105,13 +109,8 @@ export const Title = new GraphQLObjectType({
         }
       },
       resolve: (data: ImdbTitleData, { first }: any): Promise<[Person]> => {
-        const toSearch: [string] = data.cast.slice(0, first);
-        // beginning of refactor
-        //const cast: Promise<[ImdbTermResultData]> = composeP(getFilmCast)(toSearch);
-        const cast: Promise<[ImdbTermResultData]> = getFilmCast(toSearch)
-          .then(c => c.map((cst: ImdbTermResultData) => cst.results.names[0].id))
-          .then(c => c.map(searchById));
-        return cast;
+        const toSearch: [string] = firstN(first, data.cast);
+        return composeP(map(searchById), map(getFirstCastId), getFilmCast)(toSearch);
       }
     }
   },
