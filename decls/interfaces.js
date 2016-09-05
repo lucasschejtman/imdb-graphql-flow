@@ -9,6 +9,9 @@ declare interface ImdbData {
 
 declare interface ImdbTitleData extends ImdbData {
   rating: string,
+  votes: string,
+  metascore: string,
+  genres: [string],
   cast: [string]
 };
 

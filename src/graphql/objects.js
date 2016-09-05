@@ -18,17 +18,17 @@ import {
 const searchableProps = {
   id: {
     type: GraphQLString,
-    resolve: (data: ImdbData): string => data.id
+    resolve: ({ id }: ImdbData): string => id
   },
   type: {
     type: GraphQLString,
-    resolve: (data: ImdbData): string => data.type
+    resolve: ({ type }: ImdbData): string => type
   }
 };
 
-const SearchableResolver = (data: ImdbData) : GraphQLObjectType => {
+const SearchableResolver = ({ type }: ImdbData) : GraphQLObjectType => {
   const resolver = cond([[equals('title'), always(Title)], [equals('name'), always(Person)]]);
-  return compose(resolver, prop('type'))(data);
+  return resolver(type);
 };
 
 export const Searchable = new GraphQLInterfaceType({
@@ -56,19 +56,19 @@ export const Person = new GraphQLObjectType({
     ...searchableProps,
     title: {
       type: GraphQLString,
-      resolve: (data: ImdbPersonData): string => data.title
+      resolve: ({ title }: ImdbPersonData): string => title
     },
     description: {
       type: GraphQLString,
-      resolve: (data: ImdbPersonData): string => data.description
+      resolve: ({ description }: ImdbPersonData): string => description
     },
     image: {
       type: GraphQLString,
-      resolve: (data: ImdbPersonData): string => data.image
+      resolve: ({ image }: ImdbPersonData): string => image
     },
     mediaLinks: {
       type: new GraphQLList(GraphQLString),
-      resolve: (data: ImdbPersonData): [string] => data.mediaLinks
+      resolve: ({ mediaLinks }: ImdbPersonData): [string] => mediaLinks
     },
     filmography: {
       type: new GraphQLList(Film),
@@ -77,13 +77,11 @@ export const Person = new GraphQLObjectType({
           type: GraphQLInt
         }
       },
-      resolve: (data: ImdbPersonData, { first }: any): [Film] => {
-        return firstN(first, data.filmography);
-      }
+      resolve: ({ filmography }: ImdbPersonData, { first }: any): [Film] => firstN(first, filmography)
     },
     occupation: {
       type: new GraphQLList(GraphQLString),
-      resolve: (data: ImdbPersonData): [string] => data.occupation
+      resolve: ({ occupation }: ImdbPersonData): [string] => occupation
     }
   },
 });
@@ -101,6 +99,14 @@ export const Title = new GraphQLObjectType({
       type: GraphQLString,
       resolve: ({ id }: ImdbTitleData): Promise<string> => composeP(prop('imdbVotes'), searchOmdb)(id)
     },
+    metascore: {
+      type: GraphQLString,
+      resolve: ({ id }: ImdbTitleData): Promise<string> => composeP(prop('Metascore'), searchOmdb)(id)
+    },
+    genres: {
+      type: new GraphQLList(GraphQLString),
+      resolve: ({ genres }: ImdbTitleData): [string] => genres
+    },
     cast: {
       type: new GraphQLList(Person),
       args: {
@@ -108,8 +114,8 @@ export const Title = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLInt)
         }
       },
-      resolve: (data: ImdbTitleData, { first }: any): Promise<[Person]> => {
-        const toSearch: [string] = firstN(first, data.cast);
+      resolve: ({ cast }: ImdbTitleData, { first }: any): Promise<[Person]> => {
+        const toSearch: [string] = firstN(first, cast);
         return composeP(map(searchById), map(getFirstCastId), getFilmCast)(toSearch);
       }
     }
