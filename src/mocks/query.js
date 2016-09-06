@@ -5,8 +5,12 @@ query test {
       ...searchableProps,
       rating,
       votes,
+      metascore,
+      duration,
+      genres,
       cast(first: 1) {
         ...searchableProps,
+        title,
         filmography(first: 2) {
         	title
         	year

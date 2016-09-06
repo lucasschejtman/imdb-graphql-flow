@@ -107,6 +107,10 @@ export const Title = new GraphQLObjectType({
       type: new GraphQLList(GraphQLString),
       resolve: ({ genres }: ImdbTitleData): [string] => genres
     },
+    duration: {
+      type: GraphQLString,
+      resolve: ({ duration }: ImdbTitleData): string => duration
+    },
     cast: {
       type: new GraphQLList(Person),
       args: {
