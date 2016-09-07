@@ -26,7 +26,7 @@ const searchableProps = {
   }
 };
 
-const SearchableResolver = ({ type }: ImdbData) : GraphQLObjectType => {
+const SearchableResolver = ({ type }: ImdbData): GraphQLObjectType => {
   const resolver = cond([[equals('title'), always(Title)], [equals('name'), always(Person)]]);
   return resolver(type);
 };
@@ -110,6 +110,10 @@ export const Title = new GraphQLObjectType({
     duration: {
       type: GraphQLString,
       resolve: ({ duration }: ImdbTitleData): string => duration
+    },
+    released: {
+      type: GraphQLString,
+      resolve: ({ released }: ImdbTitleData): string => released
     },
     cast: {
       type: new GraphQLList(Person),

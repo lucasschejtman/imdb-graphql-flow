@@ -1,15 +1,8 @@
 /* @flow */
 
-import {
-  compose,
+import { compose, curry, map, prop, path, head,
   /* $FlowIgnore: 'composeP' not included in declaration */
-  composeP,
-  curry,
-  map,
-  prop,
-  path,
-  head
-} from 'ramda';
+  composeP } from 'ramda';
 import rp from 'request-promise';
 
 //TODO: Move to more generic place
