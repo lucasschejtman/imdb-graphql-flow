@@ -4,7 +4,7 @@ import * as TitleResolver from './resolvers/titleResolver';
 import * as PersonResolver from './resolvers/personResolver';
 
 import { cond, equals, always } from 'ramda';
-import { GraphQLInt, GraphQLInterfaceType, GraphQLObjectType, GraphQLList, GraphQLString, GraphQLNonNull } from 'graphql';
+import { GraphQLInt, GraphQLInterfaceType, GraphQLObjectType, GraphQLList, GraphQLString, GraphQLNonNull, GraphQLEnumType } from 'graphql';
 
 const SearchableResolver = ({ type }: ImdbData): GraphQLObjectType => {
   const resolver = cond([
@@ -13,6 +13,15 @@ const SearchableResolver = ({ type }: ImdbData): GraphQLObjectType => {
   ]);
   return resolver(type);
 };
+
+export const DateFormats = new GraphQLEnumType({
+  name: 'DateFormats',
+  values: {
+    YearMonthDay: { value: 'YYYY-MM-DD', description: 'YYYY-MM-DD' },
+    YearDayMonth: { value: 'YYYY-DD-MM', description: 'YYYY-DD-MM' },
+    DayMonthYear: { value: 'DD-MM-YYYY', description: 'DD-MM-YYYY' }
+  }
+});
 
 export const Searchable = new GraphQLInterfaceType({
   name: 'Searchable',
@@ -57,7 +66,7 @@ export const Title = new GraphQLObjectType({
     image:      { type: GraphQLString, resolve: TitleResolver.image },
     rating:     { type: GraphQLString, resolve: TitleResolver.rating },
     duration:   { type: GraphQLString, resolve: TitleResolver.duration },
-    released:   { type: GraphQLString, resolve: TitleResolver.released },
+    released:   { type: GraphQLString, resolve: TitleResolver.released, args: { format: { type: DateFormats } } },
     metascore:  { type: GraphQLString, resolve: TitleResolver.metascore },
     genres:     { type: new GraphQLList(GraphQLString), resolve: TitleResolver.genres },
     cast:       { type: new GraphQLList(Person), resolve: TitleResolver.cast, args: { first: { type: new GraphQLNonNull(GraphQLInt) } } }
