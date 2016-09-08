@@ -1,10 +1,12 @@
 /* @flow */
 
+import { DateFormats } from './enums';
+import * as FilmResolver from './resolvers/filmResolver';
 import * as TitleResolver from './resolvers/titleResolver';
 import * as PersonResolver from './resolvers/personResolver';
 
 import { cond, equals, always } from 'ramda';
-import { GraphQLInt, GraphQLInterfaceType, GraphQLObjectType, GraphQLList, GraphQLString, GraphQLNonNull, GraphQLEnumType } from 'graphql';
+import { GraphQLInt, GraphQLInterfaceType, GraphQLObjectType, GraphQLList, GraphQLString, GraphQLNonNull } from 'graphql';
 
 const SearchableResolver = ({ type }: ImdbData): GraphQLObjectType => {
   const resolver = cond([
@@ -14,17 +16,8 @@ const SearchableResolver = ({ type }: ImdbData): GraphQLObjectType => {
   return resolver(type);
 };
 
-export const DateFormats = new GraphQLEnumType({
-  name: 'DateFormats',
-  values: {
-    YearMonthDay: { value: 'YYYY-MM-DD', description: 'YYYY-MM-DD' },
-    YearDayMonth: { value: 'YYYY-DD-MM', description: 'YYYY-DD-MM' },
-    DayMonthYear: { value: 'DD-MM-YYYY', description: 'DD-MM-YYYY' }
-  }
-});
-
-export const Searchable = new GraphQLInterfaceType({
-  name: 'Searchable',
+export const ISearchable = new GraphQLInterfaceType({
+  name: 'ISearchable',
   fields: {
     id:   { type: GraphQLString },
     type: { type: GraphQLString }
@@ -36,14 +29,14 @@ export const Film = new GraphQLObjectType({
   name: 'Film',
   fields: {
     title:  { type: GraphQLString },
-    year:   { type: GraphQLString },
-    info:   { type: GraphQLString }
+    info:   { type: GraphQLString },
+    year:   { type: GraphQLString, resolve: FilmResolver.year, args: { format: { type: DateFormats } } }
   }
 });
 
 export const Person = new GraphQLObjectType({
   name: 'Person',
-  interfaces: [Searchable],
+  interfaces: [ISearchable],
   fields: {
     id:           { type: GraphQLString, resolve: PersonResolver.id },
     type:         { type: GraphQLString, resolve: PersonResolver.type },
@@ -58,7 +51,7 @@ export const Person = new GraphQLObjectType({
 
 export const Title = new GraphQLObjectType({
   name: 'Title',
-  interfaces: [Searchable],
+  interfaces: [ISearchable],
   fields: {
     id:         { type: GraphQLString, resolve: TitleResolver.id },
     type:       { type: GraphQLString, resolve: TitleResolver.type },

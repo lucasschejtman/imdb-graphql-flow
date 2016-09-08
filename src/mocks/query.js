@@ -1,4 +1,3 @@
-
 query test {
   search(id: "nm0000115 | tt2488496") {
   	... on Title{
@@ -26,7 +25,7 @@ query test {
       description,
       filmography {
         title
-        year
+        year(format: DayMonthYear)
         info
       },
       occupation,

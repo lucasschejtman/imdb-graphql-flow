@@ -9,8 +9,4 @@ export const image        = ({ image }: ImdbPersonData): string => image;
 export const mediaLinks   = ({ mediaLinks }: ImdbPersonData): [string] => mediaLinks;
 export const occupation   = ({ occupation }: ImdbPersonData): [string] => occupation;
 export const description  = ({ description }: ImdbPersonData): string => description;
-
-// Signature should be - bottom line - but due to circular reference changed to mixed.
-// Maybe change to a flow film declaration better instead of object literal ?
-// filmography :: ImdbPersonData -> any -> [Film]
-export const filmography  = ({ filmography }: ImdbPersonData, { first }: any): [mixed] => firstN(first, filmography);
+export const filmography  = ({ filmography }: ImdbPersonData, { first }: any): [Film] => firstN(first, filmography);

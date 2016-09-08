@@ -22,11 +22,7 @@ export const released   = ({ released }: ImdbTitleData, { format }: any): string
 export const votes      = ({ id }: ImdbTitleData): Promise<string> => composeP(prop('imdbVotes'), searchOmdb)(id);
 export const metascore  = ({ id }: ImdbTitleData): Promise<string> => composeP(prop('Metascore'), searchOmdb)(id);
 export const rating     = ({ id }: ImdbTitleData): Promise<string> => composeP(prop('imdbRating'), searchOmdb)(id);
-
-// Signature should be - bottom line - but due to circular reference changed to mixed.
-// Maybe change to a flow person declaration better instead of object literal ?
-// cast :: ImdbTitleData -> any -> [Person]
-export const cast = ({ cast }: ImdbTitleData, { first }: any): Promise<[mixed]> => {
+export const cast       = ({ cast }: ImdbTitleData, { first }: any): Promise<[ImdbPersonData]> => {
   const toSearch: [string] = firstN(first, cast);
   return composeP(map(searchById), map(getFirstCastId), getFilmCast)(toSearch);
 };

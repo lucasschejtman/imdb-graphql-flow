@@ -1,10 +1,14 @@
 /* @flow */
 
-import { Film } from '../graphql/types';
-
 declare interface ImdbData {
   id: string,
   type: string
+};
+
+declare interface Film {
+  title: string,
+  year: string,
+  info: string
 };
 
 declare interface ImdbTitleData extends ImdbData {
