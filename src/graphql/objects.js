@@ -39,8 +39,8 @@ export const Person = new GraphQLObjectType({
     id:           { type: GraphQLString, resolve: PersonResolver.id },
     type:         { type: GraphQLString, resolve: PersonResolver.type },
     title:        { type: GraphQLString, resolve: PersonResolver.title },
-    description:  { type: GraphQLString, resolve: PersonResolver.description },
     image:        { type: GraphQLString, resolve: PersonResolver.image },
+    description:  { type: GraphQLString, resolve: PersonResolver.description },
     mediaLinks:   { type: new GraphQLList(GraphQLString), resolve: PersonResolver.mediaLinks },
     occupation:   { type: new GraphQLList(GraphQLString), resolve: PersonResolver.occupation },
     filmography:  { type: new GraphQLList(Film), resolve: PersonResolver.filmography, args: { first: { type: GraphQLInt } } }
@@ -53,12 +53,12 @@ export const Title = new GraphQLObjectType({
   fields: {
     id:         { type: GraphQLString, resolve: TitleResolver.id },
     type:       { type: GraphQLString, resolve: TitleResolver.type },
-    rating:     { type: GraphQLString, resolve: TitleResolver.rating },
     votes:      { type: GraphQLString, resolve: TitleResolver.votes },
-    metascore:  { type: GraphQLString, resolve: TitleResolver.metascore },
-    genres:     { type: new GraphQLList(GraphQLString), resolve: TitleResolver.genres },
+    rating:     { type: GraphQLString, resolve: TitleResolver.rating },
     duration:   { type: GraphQLString, resolve: TitleResolver.duration },
     released:   { type: GraphQLString, resolve: TitleResolver.released },
+    metascore:  { type: GraphQLString, resolve: TitleResolver.metascore },
+    genres:     { type: new GraphQLList(GraphQLString), resolve: TitleResolver.genres },
     cast:       { type: new GraphQLList(Person), resolve: TitleResolver.cast, args: { first: { type: new GraphQLNonNull(GraphQLInt) } } }
   }
 });

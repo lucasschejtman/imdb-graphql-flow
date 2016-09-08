@@ -1,8 +1,8 @@
 /* @flow */
 
 import { Person, Title, Searchable } from './objects';
-import { searchById } from '../services/imdbService';
-import { compose, trim } from 'ramda';
+import * as SchemaResolver from './resolvers/schemaResolver';
+
 import { GraphQLObjectType, GraphQLNonNull, GraphQLSchema, GraphQLString } from 'graphql';
 
 const schema: GraphQLSchema = new GraphQLSchema({
@@ -10,15 +10,7 @@ const schema: GraphQLSchema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
-      search: {
-        type: Searchable,
-        args: {
-          id: {
-            type: new GraphQLNonNull(GraphQLString)
-          }
-        },
-        resolve: (root: any, { id }: any): Promise<JSONObject> => compose(searchById, trim)(id)
-      }
+      search: { type: Searchable, resolve: SchemaResolver.search, args: { id: { type: new GraphQLNonNull(GraphQLString) } } }
     }
   })
 });
