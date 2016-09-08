@@ -8,6 +8,7 @@ query test {
       metascore,
       duration,
       genres,
+      image,
       released,
       cast(first: 1) {
         ...searchableProps,

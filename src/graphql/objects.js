@@ -54,6 +54,7 @@ export const Title = new GraphQLObjectType({
     id:         { type: GraphQLString, resolve: TitleResolver.id },
     type:       { type: GraphQLString, resolve: TitleResolver.type },
     votes:      { type: GraphQLString, resolve: TitleResolver.votes },
+    image:      { type: GraphQLString, resolve: TitleResolver.image },
     rating:     { type: GraphQLString, resolve: TitleResolver.rating },
     duration:   { type: GraphQLString, resolve: TitleResolver.duration },
     released:   { type: GraphQLString, resolve: TitleResolver.released },

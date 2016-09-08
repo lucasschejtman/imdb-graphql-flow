@@ -14,6 +14,7 @@ const getFirstCastId  = (imdbResult: ImdbTermResultData): string => compose(head
 
 export const id         = ({ id }: ImdbData): string => id;
 export const type       = ({ type }: ImdbData): string => type;
+export const image      = ({ image }: ImdbTitleData): string => image;
 export const genres     = ({ genres }: ImdbTitleData): [string] => genres;
 export const duration   = ({ duration }: ImdbTitleData): string => duration;
 export const released   = ({ released }: ImdbTitleData): string => released;

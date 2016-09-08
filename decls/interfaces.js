@@ -14,7 +14,8 @@ declare interface ImdbTitleData extends ImdbData {
   genres: [string],
   cast: [string],
   duration: string,
-  released: string
+  released: string,
+  image: string
 };
 
 declare interface ImdbPersonData extends ImdbData {
