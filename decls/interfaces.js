@@ -13,8 +13,11 @@ declare interface Film {
 
 declare interface ImdbTitleData extends ImdbData {
   rating: string,
+  imdbRating: string,
   votes: string,
+  imdbVotes: string,
   metascore: string,
+  Metascore: string,
   genres: [string],
   cast: [string],
   duration: string,
@@ -60,3 +63,37 @@ declare interface OmdbTitleResultData {
 };
 
 declare interface JSONObject { [key:string]: mixed };
+
+//TODO: see how can I extend multiple interfaces
+declare interface ImdbMergedTitleData {
+  rating: string,
+  imdbRating: string,
+  votes: string,
+  imdbVotes: string,
+  metascore: string,
+  Metascore: string,
+  genres: [string],
+  cast: [string],
+  duration: string,
+  released: string,
+  image: string,
+  Title: string,
+  Released: string,
+  Year: string,
+  Rated: string,
+  Runtime: string,
+  Genre: string,
+  Director: string,
+  Writer: string,
+  Actors: string,
+  Plot: string,
+  Language: string,
+  Country: string,
+  Awards: String,
+  Poster: string,
+  Metascore: string,
+  imdbRating: string,
+  imdbVotes: string,
+  imdbId: string,
+  Type: string
+};
