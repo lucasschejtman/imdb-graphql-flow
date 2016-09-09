@@ -1,41 +1,35 @@
-query test {
-  search(id: "nm0000115 | tt2488496") {
-  	... on Title{
-      ...searchableProps,
-      rating,
-      votes,
-      metascore,
-      duration,
-      genres,
-      image,
-      released,
-      cast(first: 1) {
-        ...searchableProps,
+query Imdb {
+  Title(id: "tt2488496") {
+    id,
+    type,
+    votes,
+    image,
+    rating,
+    duration,
+    released(format: DayMonthYearLong),
+    metascore,
+    genres,
+    cast(first: 2) {
+      id,
+      title,
+      filmography(first: 2) {
         title,
-        filmography(first: 2) {
-        	title
-        	year
-        	info
-      	}
+        info,
+        year(format: DayMonthYearShort)
       }
     }
-    ... on Person {
-      ...searchableProps,
+  },
+  Person(id: "nm0000115") {
+    id,
+    type,
+    title,
+    image,
+    description,
+    occupation,
+    filmography(first: 2) {
       title,
-      description,
-      filmography {
-        title
-        year(format: DayMonthYear)
-        info
-      },
-      occupation,
-      image,
-      mediaLinks
+      info,
+      year(format: DayMonthYearLong)
     }
   }
-}
-
-fragment searchableProps on Searchable {
- 	id,
-  type
 }
