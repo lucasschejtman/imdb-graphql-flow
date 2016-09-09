@@ -60,24 +60,26 @@ declare interface JSONObject { [key:string]: mixed };
 
 //TODO: see how can I extend multiple interfaces
 declare interface ImdbMergedTitleData {
+  id: string,
+  type: string,
   genres: [string],
   cast: [string],
-  duration: string,
+  duration: string, // Not implemented
   released: string,
   image: string,
   Title: string,
   Released: string,
-  Year: string,
-  Rated: string,
+  Year: string,     // Not implemented
+  Rated: string,    // Not implemented
   Runtime: string,
   Genre: string,
-  Director: string,
-  Writer: string,
+  Director: string, // Not implemented
+  Writer: string,   // Not implemented
   Actors: string,
   Plot: string,
-  Language: string,
-  Country: string,
-  Awards: String,
+  Language: string, // Not implemented
+  Country: string,  // Not implemented
+  Awards: String,   // Not implemented
   Poster: string,
   Metascore: string,
   imdbRating: string,
