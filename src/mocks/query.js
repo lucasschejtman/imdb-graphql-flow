@@ -9,6 +9,7 @@ query Imdb {
     released(format: DayMonthYearLong),
     metascore,
     genres,
+    rated,
     cast(first: 2) {
       id,
       title,

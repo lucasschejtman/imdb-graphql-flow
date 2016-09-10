@@ -64,13 +64,13 @@ declare interface ImdbMergedTitleData {
   type: string,
   genres: [string],
   cast: [string],
-  duration: string, // Not implemented
+  duration: string,
   released: string,
   image: string,
   Title: string,
   Released: string,
   Year: string,     // Not implemented
-  Rated: string,    // Not implemented
+  Rated: string,
   Runtime: string,
   Genre: string,
   Director: string, // Not implemented

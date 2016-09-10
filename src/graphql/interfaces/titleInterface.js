@@ -11,6 +11,7 @@ const ITitle = new GraphQLInterfaceType({
     id:         { type: GraphQLString },
     type:       { type: GraphQLString },
     votes:      { type: GraphQLString },
+    rated:      { type: GraphQLString },
     image:      { type: GraphQLString },
     rating:     { type: GraphQLString },
     duration:   { type: GraphQLString },

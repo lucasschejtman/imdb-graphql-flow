@@ -17,6 +17,7 @@ const Title = new GraphQLObjectType({
     image:      { type: GraphQLString },
     duration:   { type: GraphQLString },
     genres:     { type: new GraphQLList(GraphQLString) },
+    rated:      { type: GraphQLString, resolve: TitleResolver.rated },
     votes:      { type: GraphQLString, resolve: TitleResolver.votes },
     rating:     { type: GraphQLString, resolve: TitleResolver.rating },
     metascore:  { type: GraphQLString, resolve: TitleResolver.metascore },
