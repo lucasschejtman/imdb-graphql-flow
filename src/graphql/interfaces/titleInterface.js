@@ -15,6 +15,7 @@ const ITitle = new GraphQLInterfaceType({
     image:      { type: GraphQLString },
     rating:     { type: GraphQLString },
     duration:   { type: GraphQLString },
+    language:   { type: GraphQLString },
     released:   { type: GraphQLString, args: { format: { type: DateFormats } }  },
     metascore:  { type: GraphQLString },
     genres:     { type: new GraphQLList(GraphQLString) },

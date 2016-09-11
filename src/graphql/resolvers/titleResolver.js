@@ -14,6 +14,7 @@ const mapIds          = (arr: [{ [key:string]: string }]): [string] => map(prop(
 const getFirstCastId  = (imdbResult: ImdbTermResultData): string => compose(head, mapIds, filmCast)(imdbResult);
 
 export const rated      = ({ Rated }: ImdbMergedTitleData): string => Rated;
+export const language   = ({ Language }: ImdbMergedTitleData): string => Language;
 export const votes      = ({ imdbVotes }: ImdbMergedTitleData): string => imdbVotes;
 export const metascore  = ({ Metascore }: ImdbMergedTitleData): string => Metascore;
 export const rating     = ({ imdbRating }: ImdbMergedTitleData): string => imdbRating;

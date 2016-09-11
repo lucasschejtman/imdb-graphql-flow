@@ -6,6 +6,7 @@ query Imdb {
     image,
     rating,
     duration,
+    language,
     released(format: DayMonthYearLong),
     metascore,
     genres,
