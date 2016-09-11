@@ -16,11 +16,11 @@ const Title = new GraphQLObjectType({
     type:       { type: GraphQLString },
     image:      { type: GraphQLString },
     duration:   { type: GraphQLString },
-    language:   { type: GraphQLString },
     genres:     { type: new GraphQLList(GraphQLString) },
     rated:      { type: GraphQLString, resolve: TitleResolver.rated },
     votes:      { type: GraphQLString, resolve: TitleResolver.votes },
     rating:     { type: GraphQLString, resolve: TitleResolver.rating },
+    language:   { type: GraphQLString, resolve: TitleResolver.language },
     metascore:  { type: GraphQLString, resolve: TitleResolver.metascore },
     released:   { type: GraphQLString, args: { format: { type: DateFormats } }, resolve: TitleResolver.released },
     cast:       { type: new GraphQLList(Person), args: { first: { type: new GraphQLNonNull(GraphQLInt) } }, resolve: TitleResolver.cast }

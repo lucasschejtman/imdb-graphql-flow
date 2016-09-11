@@ -13,4 +13,4 @@ const searchPerson    = (id: string): Promise<JSONObject> => composeP(cache.set(
 const searchTitle     = (id: string): Promise<ImdbMergedTitleData> => composeP(cache.set(id), mergeAll, promiseAll)([searchById(id), searchOmdb(id)]);
 const searchResource  = (id: string): Promise<mixed> => ifElse(isTitle, searchTitle, searchPerson)(id);
 
-export const search = (root: any, { id }: any): Promise<mixed> => compose(ifElse(cache.has, cache.get, searchResource), trim)(id);
+export const search   = (root: any, { id }: any): Promise<mixed> => compose(ifElse(cache.has, cache.get, searchResource), trim)(id);
