@@ -12,6 +12,5 @@ const searchOmdbUrl = curry((id: string): Promise<mixed> => Promise.resolve({ ur
 
 export const searchById   = (id: string): Promise<JSONObject> => composeP(prop('data'), request, searchByIdUrl)(id);
 export const searchTerm   = (term: string): Promise<ImdbTermResultData> => composeP(prop('data'), request, searchTermUrl)(term);
-export const searchTerms  = (terms: [string]): [Promise<ImdbTermResultData>] => map(searchTerm)(terms);
-export const getFilmCast  = (cast: [string]): Promise<[ImdbTermResultData]> => compose(promiseAll, searchTerms)(cast);
+export const searchTerms  = (terms: [string]): Promise<ImdbTermResultData> => compose(promiseAll, map(searchTerm))(terms);
 export const searchOmdb   = (id: string): Promise<OmdbTitleResultData> => composeP(request, searchOmdbUrl)(id);
