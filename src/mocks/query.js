@@ -7,7 +7,11 @@ query Imdb {
     rating,
     duration,
     language,
-    director,
+    director {
+      id,
+      title,
+      occupation
+    },
     released(format: DayMonthYearLong),
     metascore,
     genres,
