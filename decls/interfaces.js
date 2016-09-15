@@ -57,6 +57,7 @@ declare interface OmdbTitleResultData {
 };
 
 declare interface JSONObject { [key:string]: mixed };
+declare type RequestOptions = { [key:string]: string|bool };
 
 //TODO: see how can I extend multiple interfaces
 declare interface ImdbMergedTitleData {
