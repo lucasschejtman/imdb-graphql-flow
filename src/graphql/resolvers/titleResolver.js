@@ -16,6 +16,7 @@ const getExactMatchId   = curry((rawValues: [string], imdbResults: [ImdbTermResu
 const searchPeople      = curry((toSearch: [string]): Promise<[ImdbPersonData]> => composeP(map(searchById), getExactMatchId(toSearch), searchTerms)(toSearch));
 
 export const rated      = ({ Rated }: ImdbMergedTitleData): string => Rated;
+export const country    = ({ Country }: ImdbMergedTitleData): string => Country;
 export const language   = ({ Language }: ImdbMergedTitleData): string => Language;
 export const votes      = ({ imdbVotes }: ImdbMergedTitleData): string => imdbVotes;
 export const metascore  = ({ Metascore }: ImdbMergedTitleData): string => Metascore;
