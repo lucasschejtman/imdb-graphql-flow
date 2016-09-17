@@ -19,7 +19,6 @@ query Imdb {
     votes,
     image,
     awards,
-    writer,
     rating,
     duration,
     language,
