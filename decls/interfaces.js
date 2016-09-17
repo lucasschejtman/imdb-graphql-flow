@@ -75,7 +75,7 @@ declare interface ImdbMergedTitleData {
   Runtime: string,
   Genre: string,
   Director: string,
-  Writer: string,   // Not implemented
+  Writer: string,
   Actors: string,
   Plot: string,
   Language: string,

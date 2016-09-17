@@ -1,8 +1,8 @@
 /* @flow */
 
-import { trace } from '../../utils/curry';
 import { formatDate } from '../../utils/date';
 import { firstN } from '../../utils/collection';
+import { stripParenthesis } from '../../utils/string';
 import { searchTerms, searchById } from '../../services/imdbService';
 
 import { map, prop, path, compose, split, curry, flatten, filter, any, equals,
@@ -23,5 +23,6 @@ export const votes      = ({ imdbVotes }: ImdbMergedTitleData): string => imdbVo
 export const metascore  = ({ Metascore }: ImdbMergedTitleData): string => Metascore;
 export const rating     = ({ imdbRating }: ImdbMergedTitleData): string => imdbRating;
 export const released   = ({ released }: ImdbMergedTitleData, { format }: any): string => formatDate(released, format);
+export const writer     = ({ Writer }: ImdbMergedTitleData): Promise<[ImdbPersonData]> => compose(searchPeople, map(stripParenthesis), split(','))(Writer);
 export const director   = ({ Director }: ImdbMergedTitleData): Promise<[ImdbPersonData]> => compose(searchPeople, split(','))(Director);
 export const cast       = ({ cast }: ImdbMergedTitleData, { first }: any): Promise<[ImdbPersonData]> => compose(searchPeople, firstN(first))(cast);

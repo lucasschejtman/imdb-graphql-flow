@@ -24,6 +24,7 @@ const Title = new GraphQLObjectType({
     country:    { type: GraphQLString, resolve: TitleResolver.country },
     language:   { type: GraphQLString, resolve: TitleResolver.language },
     metascore:  { type: GraphQLString, resolve: TitleResolver.metascore },
+    writer:     { type: new GraphQLList(Person), resolve: TitleResolver.writer },
     director:   { type: new GraphQLList(Person), resolve: TitleResolver.director },
     released:   { type: GraphQLString, args: { format: { type: DateFormats } }, resolve: TitleResolver.released },
     cast:       { type: new GraphQLList(Person), args: { first: { type: new GraphQLNonNull(GraphQLInt) } }, resolve: TitleResolver.cast }
