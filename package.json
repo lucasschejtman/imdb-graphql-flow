@@ -1,5 +1,5 @@
 {
-  "name": "flow-express-api",
+  "name": "imdb-graphql-flow",
   "version": "1.0.0",
   "description": "",
   "main": "build/index",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lucasschejtman/flow-express-api.git"
+    "url": "git+https://github.com/lucasschejtman/imdb-graphql-flow.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lucasschejtman/flow-express-api/issues"
+    "url": "https://github.com/lucasschejtman/imdb-graphql-flow/issues"
   },
-  "homepage": "https://github.com/lucasschejtman/flow-express-api#readme",
+  "homepage": "https://github.com/lucasschejtman/imdb-graphql-flow#readme",
   "dependencies": {
     "express": "^4.14.0",
     "express-graphql": "^0.5.3",

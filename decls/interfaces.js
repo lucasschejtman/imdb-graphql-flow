@@ -80,7 +80,7 @@ declare interface ImdbMergedTitleData {
   Plot: string,
   Language: string,
   Country: string,
-  Awards: String,
+  Awards: string,
   Poster: string,
   Metascore: string,
   imdbRating: string,
