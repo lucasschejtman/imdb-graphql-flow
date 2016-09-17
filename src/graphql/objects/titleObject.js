@@ -19,6 +19,7 @@ const Title = new GraphQLObjectType({
     genres:     { type: new GraphQLList(GraphQLString) },
     rated:      { type: GraphQLString, resolve: TitleResolver.rated },
     votes:      { type: GraphQLString, resolve: TitleResolver.votes },
+    awards:     { type: GraphQLString, resolve: TitleResolver.awards },
     rating:     { type: GraphQLString, resolve: TitleResolver.rating },
     country:    { type: GraphQLString, resolve: TitleResolver.country },
     language:   { type: GraphQLString, resolve: TitleResolver.language },
