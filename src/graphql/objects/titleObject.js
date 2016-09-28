@@ -25,10 +25,10 @@ const Title = new GraphQLObjectType({
     imdbVotes:  { type: GraphQLString },
     imdbRating: { type: GraphQLString },
     Genre:      { type: new GraphQLList(GraphQLString), resolve: TitleResolver.Genre },
-    Writer:     { type: new GraphQLList(Person), resolve: TitleResolver.Writer },
-    Director:   { type: new GraphQLList(Person), resolve: TitleResolver.Director },
-    Released:   { type: GraphQLString, args: { format: { type: DateFormats } }, resolve: TitleResolver.Released },
-    Actors:     { type: new GraphQLList(Person), args: { first: { type: new GraphQLNonNull(GraphQLInt) } }, resolve: TitleResolver.Actors }
+    Writer:     { type: new GraphQLList(GraphQLString), resolve: TitleResolver.Writer },
+    Actors:     { type: new GraphQLList(GraphQLString), resolve: TitleResolver.Actors },
+    Director:   { type: new GraphQLList(GraphQLString), resolve: TitleResolver.Director },
+    Released:   { type: GraphQLString, args: { format: { type: DateFormats } }, resolve: TitleResolver.Released }
   },
   isTypeOf: always(ITitle)
 });

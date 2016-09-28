@@ -11,14 +11,6 @@ declare interface Film {
   info: string
 };
 
-declare interface ImdbTitleData extends ImdbData {
-  genres: [string],
-  cast: [string],
-  duration: string,
-  released: string,
-  image: string
-};
-
 declare interface ImdbPersonData extends ImdbData {
   title: string,
   description: string,
@@ -58,33 +50,3 @@ declare interface OmdbTitleResultData {
 
 declare interface JSONObject { [key:string]: mixed };
 declare type RequestOptions = { [key:string]: string|bool };
-
-//TODO: see how can I extend multiple interfaces
-declare interface ImdbMergedTitleData {
-  id: string,
-  type: string,
-  genres: [string],
-  cast: [string],
-  duration: string,
-  released: string,
-  image: string,
-  Title: string,
-  Released: string,
-  Year: string,     // Not implemented
-  Rated: string,
-  Runtime: string,
-  Genre: string,
-  Director: string,
-  Writer: string,
-  Actors: string,
-  Plot: string,
-  Language: string,
-  Country: string,
-  Awards: string,
-  Poster: string,
-  Metascore: string,
-  imdbRating: string,
-  imdbVotes: string,
-  imdbId: string,
-  Type: string
-};

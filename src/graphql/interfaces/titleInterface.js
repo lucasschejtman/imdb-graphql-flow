@@ -10,7 +10,6 @@ const ITitle = new GraphQLInterfaceType({
   fields: {
     Type:       { type: GraphQLString },
     Year:       { type: GraphQLString },
-    Genre:      { type: new GraphQLList(GraphQLString) },
     Rated:      { type: GraphQLString },
     Awards:     { type: GraphQLString },
     imdbID:     { type: GraphQLString },
@@ -21,10 +20,11 @@ const ITitle = new GraphQLInterfaceType({
     Metascore:  { type: GraphQLString },
     imdbVotes:  { type: GraphQLString },
     imdbRating: { type: GraphQLString },
-    Writer:     { type: new GraphQLList(IPerson) },
-    Director:   { type: new GraphQLList(IPerson) },
-    Released:   { type: GraphQLString, args: { format: { type: DateFormats } } },
-    Actors:     { type: new GraphQLList(IPerson), args: { first: { type: new GraphQLNonNull(GraphQLInt) } } }
+    Genre:      { type: new GraphQLList(GraphQLString) },
+    Writer:     { type: new GraphQLList(GraphQLString) },
+    Director:   { type: new GraphQLList(GraphQLString) },
+    Actors:     { type: new GraphQLList(GraphQLString) },
+    Released:   { type: GraphQLString, args: { format: { type: DateFormats } } }
   }
 });
 
