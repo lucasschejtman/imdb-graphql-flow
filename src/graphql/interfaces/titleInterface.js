@@ -8,18 +8,23 @@ import { GraphQLInt, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLInterfac
 const ITitle = new GraphQLInterfaceType({
   name: 'ITitle',
   fields: {
-    id:         { type: GraphQLString },
-    type:       { type: GraphQLString },
-    votes:      { type: GraphQLString },
-    rated:      { type: GraphQLString },
-    image:      { type: GraphQLString },
-    rating:     { type: GraphQLString },
-    duration:   { type: GraphQLString },
-    language:   { type: GraphQLString },
-    released:   { type: GraphQLString, args: { format: { type: DateFormats } }  },
-    metascore:  { type: GraphQLString },
-    genres:     { type: new GraphQLList(GraphQLString) },
-    cast:       { type: new GraphQLList(IPerson), args: { first: { type: new GraphQLNonNull(GraphQLInt) } } }
+    Type:       { type: GraphQLString },
+    Year:       { type: GraphQLString },
+    Genre:      { type: new GraphQLList(GraphQLString) },
+    Rated:      { type: GraphQLString },
+    Awards:     { type: GraphQLString },
+    imdbID:     { type: GraphQLString },
+    Poster:     { type: GraphQLString },
+    Runtime:    { type: GraphQLString },
+    Country:    { type: GraphQLString },
+    Language:   { type: GraphQLString },
+    Metascore:  { type: GraphQLString },
+    imdbVotes:  { type: GraphQLString },
+    imdbRating: { type: GraphQLString },
+    Writer:     { type: new GraphQLList(IPerson) },
+    Director:   { type: new GraphQLList(IPerson) },
+    Released:   { type: GraphQLString, args: { format: { type: DateFormats } } },
+    Actors:     { type: new GraphQLList(IPerson), args: { first: { type: new GraphQLNonNull(GraphQLInt) } } }
   }
 });
 
