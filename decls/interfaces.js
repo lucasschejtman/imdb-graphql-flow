@@ -48,5 +48,8 @@ declare interface OmdbTitleResultData {
   Type: string
 };
 
-declare interface JSONObject { [key:string]: mixed };
+type JSON = | string | number | boolean | null | JSONObject | JSONArray;
+type JSONObject = { [key:string]: JSON };
+type JSONArray = Array<JSON>;
+
 declare type RequestOptions = { [key:string]: string|bool };
