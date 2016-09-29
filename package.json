@@ -5,7 +5,8 @@
   "main": "build/index",
   "scripts": {
     "dev": "node index",
-    "debug": "babel src --out-dir build && node build/index",
+    "build": "babel src --out-dir build",
+    "debug": "npm run build && node build/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
