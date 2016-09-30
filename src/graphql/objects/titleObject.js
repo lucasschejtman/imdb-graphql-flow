@@ -1,12 +1,11 @@
 /* @flow */
 
-import Person from './personObject';
 import { DateFormats } from '../enums';
 import ITitle from '../interfaces/titleInterface';
 import * as TitleResolver from '../resolvers/titleResolver';
 
 import { always } from 'ramda';
-import { GraphQLInt, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLObjectType } from 'graphql';
+import { GraphQLString, GraphQLList, GraphQLObjectType } from 'graphql';
 
 const Title = new GraphQLObjectType({
   name: 'Title',
