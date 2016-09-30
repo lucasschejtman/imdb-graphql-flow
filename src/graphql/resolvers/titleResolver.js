@@ -2,11 +2,12 @@
 
 import { formatDate } from '../../utils/date';
 
-import { map, compose, split, trim } from 'ramda';
+import { map, compose, split, trim, propEq } from 'ramda';
 
 const omdbDateFormat    = "DD MMM YYYY";
 const strToArray        = (str: string): [string] => compose(map(trim), split(','))(str);
 
+export const Type       =  propEq('Type');
 export const Genre      = ({ Genre }: OmdbTitleResultData): [string] => strToArray(Genre);
 export const Writer     = ({ Writer }: OmdbTitleResultData): [string] => strToArray(Writer);
 export const Director   = ({ Director }: OmdbTitleResultData): [string] => strToArray(Director);

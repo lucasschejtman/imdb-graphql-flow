@@ -1,15 +1,14 @@
 /* @flow */
 
 import { DateFormats } from '../enums';
-import ITitle from '../interfaces/titleInterface';
+import TitleType from '../interfaces/titleInterface';
 import * as TitleResolver from '../resolvers/titleResolver';
 
-import { always } from 'ramda';
 import { GraphQLString, GraphQLList, GraphQLObjectType } from 'graphql';
 
-const Title = new GraphQLObjectType({
-  name: 'Title',
-  interfaces: [ITitle],
+const Episode = new GraphQLObjectType({
+  name: 'Episode',
+  interfaces: [TitleType],
   fields: {
     Type:       { type: GraphQLString },
     Year:       { type: GraphQLString },
@@ -17,8 +16,11 @@ const Title = new GraphQLObjectType({
     Awards:     { type: GraphQLString },
     imdbID:     { type: GraphQLString },
     Poster:     { type: GraphQLString },
+    Season:     { type: GraphQLString },
+    Episode:    { type: GraphQLString },
     Runtime:    { type: GraphQLString },
     Country:    { type: GraphQLString },
+    seriesID:   { type: GraphQLString },
     Language:   { type: GraphQLString },
     Metascore:  { type: GraphQLString },
     imdbVotes:  { type: GraphQLString },
@@ -29,7 +31,7 @@ const Title = new GraphQLObjectType({
     Director:   { type: new GraphQLList(GraphQLString), resolve: TitleResolver.Director },
     Released:   { type: GraphQLString, args: { format: { type: DateFormats } }, resolve: TitleResolver.Released }
   },
-  isTypeOf: always(ITitle)
+  isTypeOf: TitleResolver.Type('episode')
 });
 
-export default Title;
+export default Episode;

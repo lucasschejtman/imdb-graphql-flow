@@ -1,12 +1,11 @@
 /* @flow */
 
 import { DateFormats } from '../enums';
-import IPerson from './personInterface';
 
-import { GraphQLInt, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLInterfaceType } from 'graphql';
+import { GraphQLString, GraphQLList, GraphQLInterfaceType } from 'graphql';
 
-const ITitle = new GraphQLInterfaceType({
-  name: 'ITitle',
+const TitleType = new GraphQLInterfaceType({
+  name: 'Title',
   fields: {
     Type:       { type: GraphQLString },
     Year:       { type: GraphQLString },
@@ -28,4 +27,4 @@ const ITitle = new GraphQLInterfaceType({
   }
 });
 
-export default ITitle;
+export default TitleType;
