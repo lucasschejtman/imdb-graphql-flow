@@ -1,10 +1,12 @@
 /* @flow */
 
+import Episode from './episodeObject';
 import { DateFormats } from '../enums';
 import TitleType from '../interfaces/titleInterface';
 import * as TitleResolver from '../resolvers/titleResolver';
+import * as SeriesResolver from '../resolvers/seriesResolver';
 
-import { GraphQLString, GraphQLList, GraphQLObjectType } from 'graphql';
+import { GraphQLInt, GraphQLString, GraphQLList, GraphQLObjectType } from 'graphql';
 
 const Series = new GraphQLObjectType({
   name: 'Series',
@@ -28,7 +30,8 @@ const Series = new GraphQLObjectType({
     Writer:       { type: new GraphQLList(GraphQLString), resolve: TitleResolver.Writer },
     Actors:       { type: new GraphQLList(GraphQLString), resolve: TitleResolver.Actors },
     Director:     { type: new GraphQLList(GraphQLString), resolve: TitleResolver.Director },
-    Released:     { type: GraphQLString, args: { format: { type: DateFormats } }, resolve: TitleResolver.Released }
+    Released:     { type: GraphQLString, args: { format: { type: DateFormats } }, resolve: TitleResolver.Released },
+    Episodes:     { type: new GraphQLList(Episode), args: { fromSeason: { type: GraphQLInt } }, resolve: SeriesResolver.Season }
   },
   isTypeOf: TitleResolver.Type('series')
 });

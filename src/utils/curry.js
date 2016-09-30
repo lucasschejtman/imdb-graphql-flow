@@ -5,4 +5,5 @@ import { tap, curry } from 'ramda';
 
 export const trace      = (msg: string): * => tap(x => console.log(msg, x));
 export const request    = curry((opts: JSONObject): Promise<JSONObject> => rp(opts));
+export const resolve    = curry((resolved: any): Promise<any> => Promise.resolve(resolved));
 export const promiseAll = curry((arr: [Promise<any>]): Promise<any> => Promise.all(arr));

@@ -1,6 +1,7 @@
 /* @flow */
 
 import { DateFormats } from '../enums';
+import Series from './seriesObject';
 import TitleType from '../interfaces/titleInterface';
 import * as TitleResolver from '../resolvers/titleResolver';
 

@@ -6,14 +6,13 @@
   "scripts": {
     "dev": "node index",
     "build": "babel src --out-dir build",
-    "debug": "npm run build && node build/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lucasschejtman/imdb-graphql-flow.git"
   },
-  "author": "",
+  "author": "Lucas Schejtman <lucas.schejtman@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lucasschejtman/imdb-graphql-flow/issues"

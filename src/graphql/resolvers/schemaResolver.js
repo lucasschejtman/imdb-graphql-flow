@@ -3,7 +3,7 @@
 import * as cache from '../../utils/cache';
 import { searchById, searchOmdb } from '../../services/imdbService';
 
-import { compose, trim, ifElse, take, equals,
+import { compose, trim, ifElse, take, equals, curry,
   /* $FlowIgnore: 'composeP' not included in declaration */
   composeP } from 'ramda';
 

@@ -44,8 +44,16 @@ declare interface OmdbTitleResultData {
   Metascore: string,
   imdbRating: string,
   imdbVotes: string,
-  imdbId: string,
+  imdbID: string,
   Type: string
+};
+
+declare interface OmdbSeasonResultData {
+  Episodes: [OmdbEpisodeResultData]
+};
+
+declare interface OmdbEpisodeResultData {
+  seriesID: string
 };
 
 type JSON = | string | number | boolean | null | JSONObject | JSONArray;

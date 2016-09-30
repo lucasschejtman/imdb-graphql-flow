@@ -12,52 +12,47 @@ IMDB GraphQL API
 ## Example query
 
 ```javascript
-query Imdb {
-  Title(id: "tt2488496") {
-    id,
-    type,
-    votes,
-    image,
-    awards,
-    rating,
-    duration,
-    language,
-    writer {
-      id,
-      title,
-      occupation
+{
+  Title(id: "tt0944947") {
+    ... TitleFragment,
+
+    ... on Movie {
+      Released
     },
-    director {
-      id,
-      title,
-      occupation
-    },
-    released(format: DayMonthYearLong),
-    metascore,
-    genres,
-    rated,
-    cast(first: 2) {
-      id,
-      title,
-      filmography(first: 2) {
-        title,
-        info,
-        year(format: DayMonthYearShort)
+
+    ... on Series {
+      totalSeasons,
+      Episodes(fromSeason: 6) {
+        Title,
+        Director,
+        imdbRating
       }
-    }
-  },
-  Person(id: "nm0000115") {
-    id,
-    type,
-    title,
-    image,
-    description,
-    occupation,
-    filmography(first: 2) {
-      title,
-      info,
-      year(format: DayMonthYearLong)
+    },
+    ... on Episode {
+      Episode
     }
   }
+}
+
+fragment TitleFragment on Title
+{
+  Type,
+  Year,
+  Title,
+  Rated,
+  Awards,
+  imdbID,
+  Poster,
+  Runtime,
+  Country,
+  Language,
+  Metascore,
+  imdbVotes,
+  imdbRating,
+  Genre,
+  Writer,
+  Director,
+  Actors,
+  Released
 }
 ```
