@@ -5,7 +5,7 @@ IMDB GraphQL API
 
 1. Clone repository `git clone https://github.com/lucasschejtman/imdb-graphql-flow`
 2. Install dependencies `npm install`
-3. Run `npm run dev`
+3. Run `npm run dev` (or `npm run build` to transpile)
 4. Navigate to `http://localhost:3000/graphql` to use graphiql
 
 
@@ -28,6 +28,7 @@ IMDB GraphQL API
         imdbRating
       }
     },
+
     ... on Episode {
       Episode
     }
