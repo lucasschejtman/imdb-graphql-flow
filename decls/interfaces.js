@@ -48,7 +48,8 @@ declare interface OmdbTitleResultData {
   Type: string
 };
 
-declare interface OmdbSeasonResultData {
+declare interface OmdbSeasonResultData extends OmdbTitleResultData {
+  totalSeasons: string,
   Episodes: [OmdbEpisodeResultData]
 };
 

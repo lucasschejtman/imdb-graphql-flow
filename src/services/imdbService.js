@@ -18,4 +18,4 @@ export const searchById   = (id: string): Promise<JSONObject> => composeP(prop('
 export const searchTerm   = (term: string): Promise<ImdbTermResultData> => composeP(prop('data'), request, searchTermUrl)(term);
 export const searchTerms  = (terms: [string]): Promise<ImdbTermResultData> => compose(promiseAll, map(searchTerm))(terms);
 export const searchOmdb   = (id: string): Promise<OmdbTitleResultData> => composeP(request, searchOmdbUrl)(id);
-export const searchSeason = (id:string, number: number): [OmdbSeasonResultData] => composeP(getEpisodes, map(prop('imdbID')), getSeasonEps(id))(number);
+export const searchSeason = curry((id:string, number: number): [OmdbSeasonResultData] => composeP(getEpisodes, map(prop('imdbID')), getSeasonEps(id))(number));

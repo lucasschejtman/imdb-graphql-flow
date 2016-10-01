@@ -2,4 +2,7 @@
 
 import { searchSeason } from '../../services/imdbService';
 
-export const Season = ({ imdbID }: OmdbTitleResultData, { fromSeason }: { [key:string]: number }) => searchSeason(imdbID, fromSeason);
+import { clamp, compose } from 'ramda';
+
+/* $FlowIgnore: intersection bug? */
+export const Season = ({ imdbID, totalSeasons }: OmdbSeasonResultData, { fromSeason }: { [key:string]: number }) => compose(searchSeason(imdbID), clamp(1, parseInt(totalSeasons)))(fromSeason);
