@@ -25,12 +25,21 @@ IMDB GraphQL API
       Episodes(fromSeason: 6) {
         Title,
         Director,
-        imdbRating
+        imdbRating,
+        Released
       }
     },
 
     ... on Episode {
       Episode
+    }
+  },
+
+  Person(id: "nm0000115") {
+    title,
+    filmography(first: 2) {
+      title,
+      year
     }
   }
 }
