@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/lucasschejtman/imdb-graphql-flow#readme",
   "dependencies": {
+    "cors": "^2.8.1",
     "express": "^4.14.0",
     "express-graphql": "^0.5.3",
     "graphql": "^0.6.2",
