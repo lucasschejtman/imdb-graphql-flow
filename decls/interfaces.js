@@ -57,7 +57,7 @@ declare interface OmdbEpisodeResultData {
   seriesID: string
 };
 
-type JSON = | string | number | boolean | null | JSONObject | JSONArray;
+type JSONType = | string | number | boolean | null | JSONObject | JSONArray;
 type JSONObject = { [key:string]: JSON };
 type JSONArray = Array<JSON>;
 

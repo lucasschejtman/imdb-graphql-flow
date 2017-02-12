@@ -9,7 +9,7 @@ import { compose, trim, ifElse, take, equals,
 
 const isTitle         = (id: string): bool => compose(equals('tt'), take(2))(id);
 const searchPerson    = (id: string): Promise<ImdbPersonData> => composeP(cache.set(id), searchById)(id);
-const searchTitle     = (id: string): Promise<OmdbTitleResultData> => composeP(cache.set(id), searchOmdb)(id);
+const searchTitle     = (id: string): Promise<OmdbTitleResultData> => searchOmdb(id).fork(console.error, cache.set(id)); //composeP(cache.set(id), searchOmdb)(id);
 const searchResource  = (id: string): Promise<OmdbTitleResultData|ImdbPersonData> => ifElse(isTitle, searchTitle, searchPerson)(id);
 const fromCacheOrApi  = (id: string): Promise<OmdbTitleResultData|ImdbPersonData> => ifElse(cache.has, cache.get, searchResource)(id);
 

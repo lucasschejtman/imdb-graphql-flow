@@ -8,6 +8,7 @@ const omdbDateFormat    = "DD MMM YYYY";
 const strToArray        = (str: string): [string] => compose(map(trim), split(','))(str);
 
 export const Type       = propEq('Type');
+export const Title      = ({ Title }: OmdbTitleResultData): string => Title;
 export const Genre      = ({ Genre }: OmdbTitleResultData): [string] => strToArray(Genre);
 export const Writer     = ({ Writer }: OmdbTitleResultData): [string] => strToArray(Writer);
 export const Director   = ({ Director }: OmdbTitleResultData): [string] => strToArray(Director);
