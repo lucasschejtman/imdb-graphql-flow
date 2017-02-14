@@ -22,6 +22,7 @@
     "cors": "^2.8.1",
     "express": "^4.14.0",
     "express-graphql": "^0.5.3",
+    "fluture": "^4.3.5",
     "graphql": "^0.6.2",
     "lru-cache": "^4.0.1",
     "moment": "^2.14.1",

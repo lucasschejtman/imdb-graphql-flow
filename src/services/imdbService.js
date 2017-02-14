@@ -13,4 +13,4 @@ const getSeasonEps    = curry((id: string, number: number): Future<[JSONObject]>
 
 export const searchById   = (id: string): Future<JSONObject> => compose(map(prop('data')), fetch, searchByIdUrl)(id);
 export const searchOmdb   = (id: string): Future<OmdbTitleResultData> => compose(fetch, searchOmdbUrl)(id);
-export const searchSeason = curry((id:string, number: number): [OmdbSeasonResultData] => compose(getEpisodes, map(prop('imdbID')), getSeasonEps(id))(number));
+export const searchSeason = curry((id:string, number: number): Future<[OmdbSeasonResultData]> => compose(getEpisodes, map(prop('imdbID')), getSeasonEps(id))(number));
