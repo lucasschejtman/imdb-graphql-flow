@@ -15,7 +15,7 @@ const schema: GraphQLSchema = new GraphQLSchema({
     name: 'ImdbRootQuery',
     fields: {
       Title: { type: TitleType, resolve: SchemaResolver.search, args: { id: { type: new GraphQLNonNull(GraphQLString) } } },
-      Person: { type: Person, resolve: SchemaResolver.search, args: { id: { type: new GraphQLNonNull(GraphQLString) } } }
+      //Person: { type: Person, resolve: SchemaResolver.search, args: { id: { type: new GraphQLNonNull(GraphQLString) } } }
     }
   })
 });
