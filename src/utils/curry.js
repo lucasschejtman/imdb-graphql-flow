@@ -3,7 +3,6 @@
 import request from 'request';
 import { tap } from 'ramda';
 import Future from 'fluture';
-//import { Future } from 'ramda-fantasy';
 
 export const trace      = (msg: string): * => tap(x => console.log(msg, x));
 export const fetch      = (opts: JSONObject): Future<any> => Future((rej, res) => void request(opts, (err, response, body) => {

@@ -4,13 +4,13 @@ import TitleType from './interfaces/titleInterface';
 import Movie from './objects/movieObject';
 import Series from './objects/seriesObject';
 import Episode from './objects/episodeObject';
-import Person from './objects/personObject';
+//import Person from './objects/personObject';
 import * as SchemaResolver from './resolvers/schemaResolver';
 
 import { GraphQLObjectType, GraphQLNonNull, GraphQLSchema, GraphQLString, GraphQLList } from 'graphql';
 
 const schema: GraphQLSchema = new GraphQLSchema({
-  types: [Movie, Series, Episode, TitleType, Person],
+  types: [Movie, Series, Episode, TitleType/*, Person*/],
   query: new GraphQLObjectType({
     name: 'ImdbRootQuery',
     fields: {
