@@ -12,7 +12,7 @@ const Movie = new GraphQLObjectType({
   fields: {
     Type:       { type: GraphQLString },
     Year:       { type: GraphQLString },
-    Title:      { type: GraphQLString, resolve: TitleResolver.Title },
+    Title:      { type: GraphQLString },
     Rated:      { type: GraphQLString },
     Awards:     { type: GraphQLString },
     imdbID:     { type: GraphQLString },

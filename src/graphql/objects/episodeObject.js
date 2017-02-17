@@ -5,6 +5,7 @@ import Series from './seriesObject';
 import TitleType from '../interfaces/titleInterface';
 import * as TitleResolver from '../resolvers/titleResolver';
 
+import { has } from 'ramda';
 import { GraphQLString, GraphQLList, GraphQLObjectType } from 'graphql';
 
 const Episode = new GraphQLObjectType({
@@ -33,7 +34,9 @@ const Episode = new GraphQLObjectType({
     Director:   { type: new GraphQLList(GraphQLString), resolve: TitleResolver.Director },
     Released:   { type: GraphQLString, args: { format: { type: DateFormats } }, resolve: TitleResolver.Released }
   },
-  isTypeOf: TitleResolver.Type('episode')
+  // Workaround until Episodes API is back
+  // TitleResolver.Type('episode')
+  isTypeOf: has('Episode')
 });
 
 export default Episode;
