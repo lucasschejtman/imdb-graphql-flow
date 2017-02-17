@@ -1,11 +1,12 @@
 /* @flow */
 
 import * as cache from '../../utils/cache';
+import { startsWith } from '../../utils/string';
 import { searchById, searchOmdb } from '../../services/imdbService';
 
-import { compose, trim, ifElse, take, equals } from 'ramda';
+import { ifElse } from 'ramda';
 
-const isTitle         = (id: string): bool => compose(equals('tt'), take(2))(id);
+const isTitle         = (id: string): bool => startsWith('tt')(id);
 // Unfortunately the GraphQL driver expect a promise
 const searchPerson    = (id: string): Promise<OmdbTitleResultData> => searchById(id).promise().then(cache.set(id)).catch(console.log);
 const searchTitle     = (id: string): Promise<OmdbTitleResultData> => searchOmdb(id).promise().then(cache.set(id)).catch(console.log);
