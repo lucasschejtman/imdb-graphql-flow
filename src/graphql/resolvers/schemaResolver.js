@@ -4,7 +4,7 @@ import * as cache from '../../utils/cache';
 import { startsWith } from '../../utils/string';
 import { searchById, searchOmdb } from '../../services/imdbService';
 
-import { ifElse } from 'ramda';
+import { compose, trim, ifElse } from 'ramda';
 
 const isTitle         = (id: string): bool => startsWith('tt')(id);
 // Unfortunately the GraphQL driver expect a promise

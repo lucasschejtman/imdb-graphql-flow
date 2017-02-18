@@ -17,6 +17,12 @@ const schema: GraphQLSchema = new GraphQLSchema({
       Title: { type: TitleType, resolve: SchemaResolver.search, args: { id: { type: new GraphQLNonNull(GraphQLString) } } },
       //Person: { type: Person, resolve: SchemaResolver.search, args: { id: { type: new GraphQLNonNull(GraphQLString) } } }
     }
+  }),
+  mutation: new GraphQLObjectType({
+    name: 'ImdbRootMutation',
+    fields: {
+      updateTitle: { type: TitleType, resolve: SchemaResolver.search, args: { id: { type: new GraphQLNonNull(GraphQLString) } } }
+    }
   })
 });
 
