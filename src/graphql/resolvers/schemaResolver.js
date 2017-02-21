@@ -5,7 +5,7 @@ import * as cache from '../../utils/cache';
 import { startsWith } from '../../utils/string';
 import { searchById, searchOmdb } from '../../services/imdbService';
 
-import { compose, trim, ifElse, always, assoc } from 'ramda';
+import { compose, trim, ifElse, assoc, converge, prop, identity, uncurryN } from 'ramda';
 
 const isTitle         = (id: string): bool => startsWith('tt')(id);
 // Unfortunately the GraphQL driver expect a promise
@@ -20,4 +20,12 @@ export const search   = (root: any, { id }: any): Promise<OmdbTitleResultData|Im
 export const updateTitle = (root: any, { id, title }: any) => {
     const update = compose(cache.set(id), assoc('Title', title), cache.get);
     return ifElse(cache.has, update, gqlError(`Title with id ${id} does not exists`))(id);
+};
+
+export const createTitle = (root:any, args: { [key:string]: any }) => {
+    return compose(
+        converge(uncurryN(2, cache.set), [prop('imdbID'), identity]),
+        assoc('Type', 'movie'),
+        prop('title')
+    )(args);
 };

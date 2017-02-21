@@ -7,7 +7,7 @@ import Episode from './objects/episodeObject';
 //import Person from './objects/personObject';
 import * as SchemaResolver from './resolvers/schemaResolver';
 
-import { GraphQLObjectType, GraphQLNonNull, GraphQLSchema, GraphQLString, GraphQLList } from 'graphql';
+import { GraphQLObjectType, GraphQLNonNull, GraphQLSchema, GraphQLString, GraphQLList, GraphQLInputObjectType } from 'graphql';
 
 const schema: GraphQLSchema = new GraphQLSchema({
   types: [Movie, Series, Episode, TitleType/*, Person*/],
@@ -21,6 +21,21 @@ const schema: GraphQLSchema = new GraphQLSchema({
   mutation: new GraphQLObjectType({
     name: 'ImdbRootMutation',
     fields: {
+      createTitle: {
+          type: TitleType,
+          resolve: SchemaResolver.createTitle,
+          args: {
+              title: {
+                  type: new GraphQLInputObjectType({
+                      name: 'TitleInput',
+                      fields: {
+                          imdbID: { type: new GraphQLNonNull(GraphQLString) },
+                          Title: { type: new GraphQLNonNull(GraphQLString) }
+                      }
+                  })
+              }
+          }
+      },
       updateTitle: { type: TitleType, resolve: SchemaResolver.updateTitle, args: { id: { type: new GraphQLNonNull(GraphQLString) }, title: { type: new GraphQLNonNull(GraphQLString) } } }
     }
   })
