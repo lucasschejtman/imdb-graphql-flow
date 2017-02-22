@@ -22,10 +22,8 @@ export const updateTitle = (root: any, { id, title }: any) => {
     return ifElse(cache.has, update, gqlError(`Title with id ${id} does not exists`))(id);
 };
 
-export const createTitle = (root:any, args: { [key:string]: any }) => {
-    return compose(
-        converge(uncurryN(2, cache.set), [prop('imdbID'), identity]),
-        assoc('Type', 'movie'),
-        prop('title')
-    )(args);
-};
+export const createTitle = (root:any, args: { [key:string]: any }) => compose(
+    converge(uncurryN(2, cache.set), [prop('imdbID'), identity]),
+    assoc('Type', 'movie'),
+    prop('title')
+)(args);
