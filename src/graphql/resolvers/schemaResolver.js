@@ -16,7 +16,7 @@ const fromCacheOrApi  = (id: string): Promise<OmdbTitleResultData|ImdbPersonData
 
 export const search   = (root: any, { id }: any): Promise<OmdbTitleResultData|ImdbPersonData> => compose(fromCacheOrApi, trim)(id);
 
-// test save
+// test update
 export const updateTitle = (root: any, { id, title }: any) => {
     const update = compose(cache.set(id), assoc('Title', title), cache.get);
     return ifElse(cache.has, update, gqlError(`Title with id ${id} does not exists`))(id);

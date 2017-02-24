@@ -30,7 +30,8 @@ const schema: GraphQLSchema = new GraphQLSchema({
                       name: 'TitleInput',
                       fields: {
                           imdbID: { type: new GraphQLNonNull(GraphQLString) },
-                          Title: { type: new GraphQLNonNull(GraphQLString) }
+                          Title: { type: new GraphQLNonNull(GraphQLString) },
+                          Poster: { type: GraphQLString }
                       }
                   })
               }
