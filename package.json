@@ -20,6 +20,7 @@
   "homepage": "https://github.com/lucasschejtman/imdb-graphql-flow#readme",
   "dependencies": {
     "cors": "^2.8.1",
+    "data.maybe": "^1.2.2",
     "express": "^4.14.0",
     "express-graphql": "^0.5.3",
     "fluture": "^4.3.5",
@@ -27,7 +28,6 @@
     "lru-cache": "^4.0.1",
     "moment": "^2.14.1",
     "ramda": "^0.21.0",
-    "ramda-fantasy": "^0.7.0",
     "request-promise": "^4.1.1"
   },
   "devDependencies": {
