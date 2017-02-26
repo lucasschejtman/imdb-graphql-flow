@@ -7,18 +7,24 @@ import Episode from './objects/episodeObject';
 //import Person from './objects/personObject';
 import * as SchemaResolver from './resolvers/schemaResolver';
 
-import { GraphQLObjectType, GraphQLNonNull, GraphQLSchema, GraphQLString, GraphQLList, GraphQLInputObjectType } from 'graphql';
+import {
+  GraphQLObjectType as ObjectType,
+  GraphQLNonNull as NonNull,
+  GraphQLSchema as Schema,
+  GraphQLString as String,
+  GraphQLInputObjectType as InputObjectType
+} from 'graphql';
 
-const schema: GraphQLSchema = new GraphQLSchema({
+const schema: Schema = new Schema({
   types: [Movie, Series, Episode, TitleType/*, Person*/],
-  query: new GraphQLObjectType({
+  query: new ObjectType({
     name: 'ImdbRootQuery',
     fields: {
-      Title: { type: TitleType, resolve: SchemaResolver.search, args: { id: { type: new GraphQLNonNull(GraphQLString) } } },
-      //Person: { type: Person, resolve: SchemaResolver.search, args: { id: { type: new GraphQLNonNull(GraphQLString) } } }
+      Title: { type: TitleType, resolve: SchemaResolver.search, args: { id: { type: new NonNull(String) } } },
+      //Person: { type: Person, resolve: SchemaResolver.search, args: { id: { type: new NonNull(String) } } }
     }
   }),
-  mutation: new GraphQLObjectType({
+  mutation: new ObjectType({
     name: 'ImdbRootMutation',
     fields: {
       createTitle: {
@@ -26,18 +32,18 @@ const schema: GraphQLSchema = new GraphQLSchema({
           resolve: SchemaResolver.createTitle,
           args: {
               title: {
-                  type: new GraphQLInputObjectType({
+                  type: new InputObjectType({
                       name: 'TitleInput',
                       fields: {
-                          imdbID: { type: new GraphQLNonNull(GraphQLString) },
-                          Title: { type: new GraphQLNonNull(GraphQLString) },
-                          Poster: { type: GraphQLString }
+                          imdbID: { type: new NonNull(String) },
+                          Title: { type: new NonNull(String) },
+                          Poster: { type: String }
                       }
                   })
               }
           }
       },
-      updateTitle: { type: TitleType, resolve: SchemaResolver.updateTitle, args: { id: { type: new GraphQLNonNull(GraphQLString) }, title: { type: new GraphQLNonNull(GraphQLString) } } }
+      updateTitle: { type: TitleType, resolve: SchemaResolver.updateTitle, args: { id: { type: new NonNull(String) }, title: { type: new NonNull(String) } } }
     }
   })
 });
