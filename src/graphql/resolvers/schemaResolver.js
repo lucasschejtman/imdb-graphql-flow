@@ -23,7 +23,7 @@ export const updateTitle = (root: any, { id, title }: any) => {
 };
 
 export const createTitle = (root:any, args: { [key:string]: any }) => R.compose(
-    R.converge(R.uncurryN(2, cache.set), [R.prop('imdbID'), R.identity]),
+    R.chain(cache.set, R.prop('imdbID')),
     R.assoc('Type', 'movie'),
     R.prop('title')
 )(args);
