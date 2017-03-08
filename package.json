@@ -1,7 +1,7 @@
 {
   "name": "imdb-graphql-flow",
   "version": "1.0.0",
-  "description": "",
+  "description": "Graphql wrapper - using the nodejs driver and flowtype - for the unofficial IMDB API",
   "main": "build/index",
   "scripts": {
     "dev": "node index",
