@@ -43,7 +43,14 @@ const schema: Schema = new Schema({
               }
           }
       },
-      updateTitle: { type: TitleType, resolve: SchemaResolver.updateTitle, args: { id: { type: new NonNull(String) }, title: { type: new NonNull(String) } } }
+      updateTitle: {
+          type: TitleType,
+          resolve: SchemaResolver.updateTitle,
+          args: {
+              id: { type: new NonNull(String) },
+              title: { type: new NonNull(String) }
+          }
+      }
     }
   })
 });
