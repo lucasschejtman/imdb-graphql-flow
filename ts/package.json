@@ -7,10 +7,12 @@
     "node": ">= 7.0.0"
   },
   "scripts": {
+    "build": "tsc -p tsconfig.json",
     "clean": "rimraf coverage build tmp",
-    "build": "tsc -p tsconfig.release.json",
-    "watch": "tsc -w -p tsconfig.release.json",
-    "lint": "tslint -t stylish '{src,__tests__}/**/*.{ts,tsx}'"
+    "clean:build": "rimraf build",
+    "clean:dist": "rimraf dist",
+    "lint": "tslint -t stylish src/**/*.ts",
+    "watch": "tsc -w -p tsconfig.json"
   },
   "author": "Lucas Schetjman <lucas.schejtman@gmail.com>",
   "license": "MIT",
@@ -27,6 +29,8 @@
   },
   "devDependencies": {
     "@types/node": "^7.0.8",
+    "cross-env": "^3.2.4",
+    "npm-run-all": "^4.0.2",
     "rimraf": "^2.6.1",
     "tslint": "^4.5.1",
     "tslint-microsoft-contrib": "^4.0.1",

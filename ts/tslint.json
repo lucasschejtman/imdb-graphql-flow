@@ -1,0 +1,9 @@
+{
+  "extends": "tslint-microsoft-contrib",
+  "rules": {
+    "curly": true
+  },
+  "jsRules": {
+    "curly": true
+  }
+}
