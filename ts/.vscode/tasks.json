@@ -1,0 +1,37 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "0.1.0",
+    "windows": {},
+    "osx": {},
+    "linux": {},
+    "command": "npm",
+    "isShellCommand": true,
+    "suppressTaskName": true,
+    "tasks": [
+        {
+            //Debug Task
+            "taskName": "debug",
+            "isBuildCommand": false,
+            "isTestCommand": false,
+            "showOutput": "always",
+            "args": ["run", "debug"]
+        },
+        {
+            // Build Task
+            "taskName": "build",
+            "isBuildCommand": true,
+            "isTestCommand": false,
+            "showOutput": "always",
+            "args": ["run", "build"]
+        },
+        {
+            // Clean Task
+            "taskName": "clean",
+            "isBuildCommand": false,
+            "isTestCommand": false,
+            "showOutput": "always",
+            "args": ["run", "clean"]
+        }
+    ]
+}
