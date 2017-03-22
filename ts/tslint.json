@@ -1,7 +1,11 @@
 {
   "extends": "tslint-microsoft-contrib",
   "rules": {
-    "curly": true
+    "curly": true,
+    "typedef": [
+      "variable-declaration"
+    ],
+    "no-default-export": false
   },
   "jsRules": {
     "curly": true
