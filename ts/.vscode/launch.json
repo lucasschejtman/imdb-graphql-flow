@@ -5,12 +5,12 @@
             "name": "Launch",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceRoot}/dist/index.js",
+            "program": "${workspaceRoot}/dist/src/server.js",
             "protocol": "inspector",
             "stopOnEntry": false,
             "args": [],
             "cwd": "${workspaceRoot}",
-            "preLaunchTask": "debug",
+            "preLaunchTask": "tsc",
             "runtimeExecutable": null,
             "runtimeArgs": [
                 "--nolazy"

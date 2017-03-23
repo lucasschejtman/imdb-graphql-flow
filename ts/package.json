@@ -12,7 +12,8 @@
     "clean:build": "rimraf build",
     "clean:dist": "rimraf dist",
     "lint": "tslint -t stylish src/**/*.ts",
-    "watch": "tsc -w -p tsconfig.json"
+    "watch": "tsc -w -p tsconfig.json",
+    "tsc": "tsc"
   },
   "author": "Lucas Schetjman <lucas.schejtman@gmail.com>",
   "license": "MIT",
@@ -25,9 +26,15 @@
   },
   "homepage": "https://github.com/lucasschejtman/imdb-graphql-flow#readme",
   "dependencies": {
+    "express": "^4.15.2",
+    "express-graphql": "^0.6.3",
+    "graphql": "^0.9.1",
     "tslib": "^1.6.0"
   },
   "devDependencies": {
+    "@types/express": "^4.0.35",
+    "@types/express-graphql": "0.0.33",
+    "@types/graphql": "^0.8.6",
     "@types/node": "^7.0.8",
     "cross-env": "^3.2.4",
     "npm-run-all": "^4.0.2",

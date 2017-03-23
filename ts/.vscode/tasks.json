@@ -32,6 +32,11 @@
             "isTestCommand": false,
             "showOutput": "always",
             "args": ["run", "clean"]
+        },
+        {
+            "taskName": "tsc",
+            "args": ["run", "tsc"],
+            "isBuildCommand": true
         }
     ]
 }
