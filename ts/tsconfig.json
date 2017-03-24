@@ -6,6 +6,9 @@
     "sourceMap": true,
     "declaration": false,
     "noImplicitAny": false,
+    "lib": [
+      "es6"
+    ],
     "rootDir": ".",
     "outDir": "dist",
     "allowSyntheticDefaultImports": true,

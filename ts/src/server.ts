@@ -1,8 +1,8 @@
-const express = require('express');
-const graphqlHTTP = require('express-graphql');
-const { buildSchema } = require('graphql');
+import * as express from 'express';
+import * as graphqlHTTP from 'express-graphql';
+import * as graphql from 'graphql';
 
-const schema = buildSchema(`
+const schema = graphql.buildSchema(`
     type Query {
         hello: String
     }
@@ -10,7 +10,7 @@ const schema = buildSchema(`
 
 /**
  * Test Fn
- * 
+ *
  * @returns {string} Returns 'world'
  */
 function greet(): string {

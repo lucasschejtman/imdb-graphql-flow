@@ -13,7 +13,7 @@
     "clean:dist": "rimraf dist",
     "lint": "tslint -t stylish src/**/*.ts",
     "watch": "tsc -w -p tsconfig.json",
-    "tsc": "tsc"
+    "tsc": "tsc -p tsconfig.json"
   },
   "author": "Lucas Schetjman <lucas.schejtman@gmail.com>",
   "license": "MIT",
