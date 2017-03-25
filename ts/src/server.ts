@@ -14,11 +14,9 @@ const schema = graphql.buildSchema(`
  *
  * @returns {string} Returns 'world'
  */
-function greet(): string {
-    return 'world';
-}
+const greet = (): string => 'world';
 
-const root = {
+const root: object = {
     hello: greet
 };
 
