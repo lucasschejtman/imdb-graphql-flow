@@ -7,6 +7,10 @@ const schema = graphql.buildSchema(`
     type Query {
         hello: String
     }
+
+    type Mutation {
+        saveGreeting: Fn
+    }
 `);
 
 /**
