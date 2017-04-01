@@ -8,7 +8,7 @@ const schema = `
         hello: String
     }
     type Mutation {
-        saveGreeting: Fn
+        saveGreeting: String
     }
 `;
 

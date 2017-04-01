@@ -9,14 +9,22 @@ import schema from './schema';
 const builtSchema = graphql.buildSchema(schema);
 
 /**
- * Test Fn
+ * Test query
  *
  * @returns {string} Returns 'world'
  */
 const greet = (): string => 'world';
 
+/**
+ * Test mutation
+ * 
+ * @returns {string} Returns 'saved'
+ */
+const saveGreeting = (): string => 'saved';
+
 const root: object = {
-    hello: greet
+    hello: greet,
+    saveGreeting: saveGreeting
 };
 
 const app = express();
