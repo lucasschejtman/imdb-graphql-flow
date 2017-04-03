@@ -8,19 +8,26 @@ import schema from './schema';
 
 const builtSchema = graphql.buildSchema(schema);
 
+const cache = {
+    greet: 'world'
+};
+
 /**
  * Test query
  *
  * @returns {string} Returns 'world'
  */
-const greet = (): string => 'world';
+const greet = (): string => cache.greet;
 
 /**
  * Test mutation
  * 
  * @returns {string} Returns 'saved'
  */
-const saveGreeting = (): string => 'saved';
+const saveGreeting = (): string => {
+    cache.greet = 'another greeting';
+    return cache.greet;
+};
 
 const root: object = {
     hello: greet,
