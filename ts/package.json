@@ -29,6 +29,7 @@
     "express": "^4.15.2",
     "express-graphql": "^0.6.3",
     "graphql": "^0.9.1",
+    "ramda": "^0.23.0",
     "tslib": "^1.6.0"
   },
   "devDependencies": {
